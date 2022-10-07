@@ -50,3 +50,5 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+ASCII-Table.svg
+ascii-table.jpg
