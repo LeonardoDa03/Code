@@ -1,16 +1,27 @@
 #include <stdio.h>
-#include <conio.h>
+/*
+===================================================
+Scrivere un programma che legge da stdin un numero n intero
+positivo e ne stampa su stdout tutti i divisori propri (1 incluso, n
+escluso).
+Promemoria: l’operatore / esprime il quoziente e l’operatore %
+esprime il resto della divisione (tra interi)
+Esempio:
+Inserisci un numero: 20
+I divisori propri di 20 sono: 1 2 4 5 10
+===================================================
+*/
 
 int main()
 {
-    int N;
+    int N, i=1;
     // welcome user
     printf("Enter an integer: ");
 
     // reads and stores user input
     scanf("%d", &N);
     
-    printf("N is divisible by %d", 1);
+    printf("N is divisible by %d", i);
     for (int i = 2; i <= (N / 2); i++)
     {
         if ((N % i) == 0)
@@ -20,11 +31,5 @@ int main()
     }
 
     printf("\n\n");
-    /* greet user
-    //printf("Press esc to exit.\n");
-    // wait for esc (27)
-    while (_getch() != 27)
-    {
-    }*/
     return 0;
 }
