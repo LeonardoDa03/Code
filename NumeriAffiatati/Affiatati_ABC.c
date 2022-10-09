@@ -29,7 +29,7 @@ esempio 2000), indipendentemente dal numero di cifre.
 // commenta la variante che NON vuoi utilizzare
 
 #define VarA // soglia 99 (parire da 10)
-#define VarB // il maggiore è primo
+//#define VarB // il maggiore è primo
 #define VarC // soglia inserita dall'utente
 
 int main()
