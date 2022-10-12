@@ -7,7 +7,17 @@
 	"settings": {
 		"files.associations": {
 			"stdio.h": "c",
-			"stdlib.h": "c"
+			"stdlib.h": "c",
+			"climits": "c",
+			"cmath": "c",
+			"cstdarg": "c",
+			"cstdio": "c",
+			"cstdlib": "c",
+			"limits": "c",
+			"new": "c",
+			"*.tcc": "c",
+			"type_traits": "c",
+			"typeinfo": "c"
 		}
 	}
 }
