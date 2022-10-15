@@ -1,65 +1,97 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
+#define sentinella '.'
 int main()
 {
-    char sentinella = '.', c, PrC;
-    int cons = 0, voc=0, a = 0, e = 0, i = 0, o = 0, u = 0, MaxOV = 0, Lungh = 1, MaxLungh=0;
-    printf("insersi u carattere (. per termianre) \n");
-    
-    while (c != sentinella)
+
+    struct VocCons
     {
-        scanf("%c", &c);
-        // cosgtringi minuscola
-        if ((c >= 'A') && (c <= 'Z'))
-            c = c + ('a' - 'A');
+        unsigned int a;
+        unsigned int e;
+        unsigned int i;
+        unsigned int o;
+        unsigned int u;
+        unsigned int voc;
+        char MostVoc;
+        unsigned int cons;
+        unsigned int Llen;
+        unsigned int Clen;
+    };
 
-        if ((c >= 'a') && (c <= 'z'))
+    struct VocCons p = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+
+    char c;
+    unsigned int MaxV = 0;
+    printf("insersi una stringa (. per terminare) \n");
+
+    scanf("%c", &c);
+
+    while (c != sentinella && c != 10)
+    {
+        c = tolower(c);
+        //printf("%c",c);
+        p.Clen++;
+
+        if (c >= 'a' && c <= 'z')
+            p.Llen++;
+
+        switch (c)
         {
-            if (c == 'a')
+        case 'a':
+            p.a++;
+            if (p.a > MaxV)
             {
-                a++;
-                if (a > MaxOV)
-                    MaxOV = a;
+                MaxV = p.a;
+                p.MostVoc = 'a';
             }
-            else if (c == 'e')
-            {
-                e++;
-                if (e > MaxOV)
-                    MaxOV = a;
-            }
-            else if (c == 'i')
-            {
-                i++;
-                if (i > MaxOV)
-                    MaxOV = a;
-            }
-            else if (c == 'o')
-            {
-                o++;
-                if (o > MaxOV)
-                    MaxOV = a;
-            }
-            else if (c == 'u')
-            {
-                u++;
-                if (u > MaxOV)
-                    MaxOV = a;
-            }
-            else
-                cons++;
+            break;
 
-            voc=a+e+i+o+u;
-            if (c == PrC)
+        case 'e':
+            p.e++;
+            if (p.e > MaxV)
             {
-                Lungh++;
-                if (Lungh>MaxLungh)
-                    MaxLungh=Lungh;
+                MaxV = p.e;
+                p.MostVoc = 'e';
             }
-            else
-                Lungh=1;
+            break;
 
-            PrC = c;
+        case 'i':
+            p.i++;
+            if (p.i > MaxV)
+            {
+                MaxV = p.i;
+                p.MostVoc = 'i';
+            }
+            break;
+
+        case 'o':
+            p.o++;
+            if (p.o > MaxV)
+            {
+                MaxV = p.o;
+                p.MostVoc = 'o';
+            }
+            break;
+
+        case 'u':
+            p.u++;
+            if (p.u > MaxV)
+            {
+                MaxV = p.u;
+                p.MostVoc = 'u';
+            }
+            break;
         }
+        scanf("%c",&c);
     }
+
+    p.voc = p.a + p.e + p.i + p.o + p.u;
+    printf("\nhai digitato %u caratteri\n", p.Clen);
+    printf("di cui %u lettere\n", p.Llen);
+    printf("%d vocali: a: %u, e: %u, i: %u, o: %u, u: %u\n", p.voc, p.a, p.e, p.i, p.o, p.u);
+    printf("la vocale piu' frequente e' la %c\n", p.MostVoc);
+    printf("%u consonanti\n", p.Llen - p.voc);
     return 0;
 }
