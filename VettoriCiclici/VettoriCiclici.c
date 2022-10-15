@@ -23,7 +23,7 @@ Si badi all’algoritmo!
 #include <stdio.h>
 
 #define N 8 // conosciamo a priori la lunghezza del nostro array
-#define v1  // decommenta se vuoi utilizzare v1, commenta se vuoi utilizzare v2
+//#define v1  // decommenta se vuoi utilizzare v1, commenta se vuoi utilizzare v2
 
 int main()
 {
@@ -40,7 +40,7 @@ int main()
     char ciclico = 0; // variabile che descrive se il percorso è ciclico (1) o meno (0)
 
     // forzando un valore negativo a 'i' usciremo dal while, quando ciclico sarà impostato ad 1 usciremo dal while
-    while (i >= 0 && !ciclico)
+    while (i >= 0 && !ciclico && v[i] >= 0 && v[i] < N)
     {
         if (B[i] == 1)
         {
@@ -49,15 +49,9 @@ int main()
             ciclico = 1; // fammi sapere che è ciclico
         }
 
-        if (v[i] >= 0 && v[i] < N)
-        {
-            // indirizzo accattabile
-            B[i] = 1; // ricorda dove sei già stato, metti una briciola
-            i = v[i]; // aggiorna il prossimo indirizzo
-        }
-        else
-            // valore non accettabile, esci dal while
-            i = -1;
+        // indirizzo accattabile
+        B[i] = 1; // ricorda dove sei già stato, metti una briciola
+        i = v[i]; // aggiorna il prossimo indirizzo
     }
 
     if (!ciclico) // se non è ciclico fammelo sapere
